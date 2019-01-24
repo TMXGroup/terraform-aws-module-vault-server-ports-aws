@@ -24,6 +24,19 @@ resource "aws_security_group_rule" "vault_client_traffic" {
   #cidr_blocks       = ["${var.cidr_blocks}"]
 }
 
+# Default listen port for UI and API connectivity.
+resource "aws_security_group_rule" "vault_client_traffic" {
+  count = "${var.create ? 1 : 0}"
+
+  security_group_id = "${aws_security_group.vault_server.id}"
+  type              = "ingress"
+  protocol          = "tcp"
+  from_port         = 8200
+  to_port           = 8200
+  source_security_group_id   = "${aws_security_group.vault_server.id}"
+  #cidr_blocks       = ["${var.cidr_blocks}"]
+}
+
 # Default listen port for server to server requests within a cluster. Also required for cluster to cluster replication traffic.
 resource "aws_security_group_rule" "vault_cluster_traffic" {
   count = "${var.create ? 1 : 0}"
@@ -33,7 +46,18 @@ resource "aws_security_group_rule" "vault_cluster_traffic" {
   protocol          = "tcp"
   from_port         = 8201
   to_port           = 8201
-  cidr_blocks       = ["${var.cidr_blocks}"]
+   source_security_group_id   = "${var.sg_group}"
+}
+
+resource "aws_security_group_rule" "vault_cluster_traffic" {
+  count = "${var.create ? 1 : 0}"
+
+  security_group_id = "${aws_security_group.vault_server.id}"
+  type              = "ingress"
+  protocol          = "tcp"
+  from_port         = 8201
+  to_port           = 8201
+  source_security_group_id   = "${aws_security_group.vault_server.id}"
 }
 
 # All outbound traffic - TCP.
