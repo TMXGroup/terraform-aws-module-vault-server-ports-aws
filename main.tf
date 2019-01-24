@@ -32,7 +32,7 @@ resource "aws_security_group_rule" "vault_cluster_traffic" {
   protocol          = "tcp"
   from_port         = 8201
   to_port           = 8201
-  security_groups   = ["${var.cidr_blocks}"]
+  cidr_blocks       = ["${var.cidr_blocks_test}"]
 }
 
 # All outbound traffic - TCP.
