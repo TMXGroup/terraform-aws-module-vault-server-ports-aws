@@ -14,7 +14,6 @@ variable "vpc_id" {
 
 variable "cidr_blocks" {
   description = "CIDR blocks for Security Groups."
-  type        = "list"
 }
 
 variable "tags" {
