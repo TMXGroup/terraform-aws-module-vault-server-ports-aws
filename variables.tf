@@ -14,12 +14,12 @@ variable "vpc_id" {
 
 variable "cidr_blocks" {
   description = "CIDR blocks for Security Groups."
+  type        = "list"
 }
 
-variable "cidr_blocks_test" {
-  description = "CIDR blocks for Security Groups."
-  type        = "list"
-  default     = "10.10.10.10/32"
+variable "sg_group" {
+  description = "allowed sg."
+
 }
 
 variable "tags" {
