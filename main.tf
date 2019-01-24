@@ -25,7 +25,7 @@ resource "aws_security_group_rule" "vault_client_traffic" {
 }
 
 # Default listen port for UI and API connectivity.
-resource "aws_security_group_rule" "vault_client_traffic" {
+resource "aws_security_group_rule" "vault_client_traffic_internal" {
   count = "${var.create ? 1 : 0}"
 
   security_group_id = "${aws_security_group.vault_server.id}"
@@ -49,7 +49,7 @@ resource "aws_security_group_rule" "vault_cluster_traffic" {
    source_security_group_id   = "${var.sg_group}"
 }
 
-resource "aws_security_group_rule" "vault_cluster_traffic" {
+resource "aws_security_group_rule" "vault_cluster_traffic_internal" {
   count = "${var.create ? 1 : 0}"
 
   security_group_id = "${aws_security_group.vault_server.id}"
