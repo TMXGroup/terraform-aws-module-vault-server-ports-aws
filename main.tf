@@ -20,8 +20,8 @@ resource "aws_security_group_rule" "vault_client_traffic" {
   protocol          = "tcp"
   from_port         = 8200
   to_port           = 8200
-  #source_security_group_id   = ["${var.sg_group}"]
-  cidr_blocks       = ["${var.cidr_blocks}"]
+  source_security_group_id   = "${var.sg_group}"
+  #cidr_blocks       = ["${var.cidr_blocks}"]
 }
 
 # Default listen port for server to server requests within a cluster. Also required for cluster to cluster replication traffic.

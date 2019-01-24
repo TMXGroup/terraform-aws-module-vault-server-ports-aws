@@ -19,7 +19,7 @@ variable "cidr_blocks" {
 
 variable "sg_group" {
   description = "allowed sg."
-
+  type        = "string"
 }
 
 variable "tags" {
