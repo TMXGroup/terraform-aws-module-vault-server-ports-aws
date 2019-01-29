@@ -17,7 +17,7 @@ variable "cidr_blocks" {
   type        = "list"
 }
 
-variable "sg_group" {
+variable "consul_sg_group" {
   description = "allowed sg."
   type        = "string"
 }

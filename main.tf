@@ -20,7 +20,7 @@ resource "aws_security_group_rule" "vault_client_traffic" {
   protocol          = "tcp"
   from_port         = 8200
   to_port           = 8200
-  source_security_group_id   = "${var.sg_group}"
+  source_security_group_id   = "${var.consul_sg_group}"
   #cidr_blocks       = ["${var.cidr_blocks}"]
 }
 
@@ -46,7 +46,7 @@ resource "aws_security_group_rule" "vault_cluster_traffic" {
   protocol          = "tcp"
   from_port         = 8201
   to_port           = 8201
-   source_security_group_id   = "${var.sg_group}"
+   source_security_group_id   = "${var.consul_sg_group}"
 }
 
 resource "aws_security_group_rule" "vault_cluster_traffic_internal" {
