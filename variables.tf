@@ -18,7 +18,7 @@ variable "cidr_blocks" {
 }
 
 variable "consul_sg_group" {
-  description = "allowed sg."
+  description = "allowed sg consul cluster sg."
   type        = "string"
 }
 
