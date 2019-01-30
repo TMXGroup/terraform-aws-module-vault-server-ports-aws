@@ -38,7 +38,7 @@ resource "aws_security_group_rule" "vault_client_traffic_internal" {
 }
 
 # Listen port for vault load balancer
-resource "aws_security_group_rule" "vault_client_traffic" {
+resource "aws_security_group_rule" "vault_client_traffic_lb" {
   count = "${var.create ? 1 : 0}"
 
   security_group_id         = "${aws_security_group.vault_server.id}"
