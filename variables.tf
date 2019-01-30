@@ -22,6 +22,11 @@ variable "consul_sg_group" {
   type        = "string"
 }
 
+variable "vault_lb_sg_group" {
+  description = "allowed sg consul cluster sg."
+  type        = "string"
+}
+
 variable "tags" {
   description = "Optional map of tags to set on resources, defaults to empty map."
   type        = "map"
